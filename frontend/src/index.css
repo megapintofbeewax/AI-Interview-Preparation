@@ -1,0 +1,413 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg-primary: #09090B;
+  --color-bg-secondary: #111113;
+  --color-surface-elevated: #18181B;
+  --color-charcoal: #27272A;
+  --color-text-primary: #FAFAF5;
+  --color-text-secondary: #A1A1AA;
+  --color-text-muted: #71717A;
+  
+  --color-accent: #D97706;
+  --color-accent-bright: #F59E0B;
+  --color-accent-pale: #FEF3C7;
+  
+  --glow-amber: rgba(217, 119, 6, 0.22);
+  --glow-amber-light: rgba(245, 158, 11, 0.12);
+  --glow-amber-strong: rgba(245, 158, 11, 0.35);
+  
+  --glass-surface: rgba(255, 255, 255, 0.055);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --subtle-border: rgba(255, 255, 255, 0.08);
+
+  --radius-card: 24px;
+  --radius-control: 14px;
+
+  --transition-fast: 160ms ease;
+  --transition-normal: 220ms ease;
+  --transition-slow: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  body {
+    background-color: #09090B;
+    color: #FAFAF5;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-color: #09090B;
+    color: #FAFAF5;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  /* Sophisticated Dark Scrollbar with Amber Hue */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090B;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(245, 158, 11, 0.20);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 158, 11, 0.45);
+    box-shadow: 0 0 10px rgba(217, 119, 6, 0.4);
+  }
+}
+
+@layer components {
+  /* Maximalist Dark Glassmorphic Panels */
+  .glass-panel {
+    background: rgba(18, 18, 22, 0.72);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.60),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 0 40px rgba(217, 119, 6, 0.04);
+    border-radius: var(--radius-card);
+    position: relative;
+  }
+
+  /* Secondary translucent floating panel */
+  .glass-panel-subtle {
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 10px 32px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+  }
+
+  /* Focal/Elevated Glass Panel with Amber aura */
+  .glass-panel-elevated {
+    background: rgba(24, 24, 28, 0.85);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    box-shadow:
+      0 24px 64px rgba(0, 0, 0, 0.75),
+      0 0 45px rgba(217, 119, 6, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.20);
+    border-radius: var(--radius-card);
+  }
+
+  /* Interactive Glass Card with Hover Lift and Amber Lighting */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.065);
+    border-color: rgba(245, 158, 11, 0.35);
+    transform: translateY(-2px);
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.55),
+      0 0 25px rgba(217, 119, 6, 0.16);
+  }
+
+  /* Maximalist Dark Glass Navbar */
+  .glass-nav {
+    background: rgba(9, 9, 11, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Primary Amber Button with Futuristic Glow & Top Edge Light */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: #09090B;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: var(--radius-control);
+    border: 1px solid rgba(254, 243, 199, 0.40);
+    box-shadow:
+      0 4px 20px rgba(217, 119, 6, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.40);
+    cursor: pointer;
+    transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+    color: #09090B;
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 32px rgba(245, 158, 11, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.50);
+  }
+
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(217, 119, 6, 0.35);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.40;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Secondary Translucent Dark Glass Button */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #FAFAF5;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.70rem 1.3rem;
+    border-radius: var(--radius-control);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.30);
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(245, 158, 11, 0.45);
+    color: #FEF3C7;
+    transform: translateY(-1px);
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.45),
+      0 0 18px rgba(217, 119, 6, 0.18);
+  }
+
+  .btn-secondary:disabled {
+    opacity: 0.40;
+    cursor: not-allowed;
+  }
+
+  /* Minimalist Translucent Dark Input with Amber Focus Aura */
+  .input-base {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.7rem 1rem;
+    background: rgba(18, 18, 22, 0.70);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-control);
+    color: #FAFAF5;
+    font-size: 0.875rem;
+    transition: all 180ms ease;
+    backdrop-filter: blur(12px);
+  }
+
+  .input-base::placeholder {
+    color: #71717A;
+  }
+
+  .input-base:focus {
+    outline: none;
+    background: rgba(24, 24, 28, 0.90);
+    border-color: #F59E0B;
+    box-shadow:
+      0 0 0 3px rgba(245, 158, 11, 0.20),
+      0 0 25px rgba(217, 119, 6, 0.20);
+  }
+
+  .input-base:disabled {
+    background: rgba(255, 255, 255, 0.02);
+    cursor: not-allowed;
+    opacity: 0.50;
+  }
+
+  /* Amber Translucent Highlight Badge */
+  .badge-amber {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(245, 158, 11, 0.12);
+    color: #FCD34D;
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(217, 119, 6, 0.12);
+  }
+
+  /* Dark Translucent Badge */
+  .badge-dark {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    color: #A1A1AA;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseAmberSlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.04);
+  }
+}
+
+.animate-amber-pulse {
+  animation: pulseAmberSlow 3s ease-in-out infinite;
+}
+
+@keyframes soundWave {
+  0%, 100% { height: 6px; }
+  50% { height: 26px; }
+}
+
+.animate-soundwave-1 { animation: soundWave 0.8s ease-in-out infinite 0.1s; }
+.animate-soundwave-2 { animation: soundWave 0.8s ease-in-out infinite 0.3s; }
+.animate-soundwave-3 { animation: soundWave 0.8s ease-in-out infinite 0.2s; }
+.animate-soundwave-4 { animation: soundWave 0.8s ease-in-out infinite 0.4s; }
+.animate-soundwave-5 { animation: soundWave 0.8s ease-in-out infinite 0.15s; }
+
+/* ========================================================
+   macOS-INSPIRED ANIMATED BLACK & AMBER LIVING BACKGROUND
+   ======================================================== */
+
+@keyframes macosWave1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  30% {
+    transform: translate3d(6vw, 4vh, 0) scale(1.05) rotate(1.5deg);
+  }
+  65% {
+    transform: translate3d(2vw, 8vh, 0) scale(1.02) rotate(-1deg);
+  }
+  100% {
+    transform: translate3d(8vw, 5vh, 0) scale(1.08) rotate(2deg);
+  }
+}
+
+@keyframes macosWave2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.04) rotate(0deg);
+  }
+  35% {
+    transform: translate3d(-5vw, -4vh, 0) scale(0.98) rotate(-2deg);
+  }
+  70% {
+    transform: translate3d(-8vw, -2vh, 0) scale(1.03) rotate(1deg);
+  }
+  100% {
+    transform: translate3d(-10vw, -6vh, 0) scale(0.96) rotate(-3deg);
+  }
+}
+
+@keyframes macosWave3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.98) rotate(0deg);
+  }
+  40% {
+    transform: translate3d(5vw, -5vh, 0) scale(1.04) rotate(2deg);
+  }
+  75% {
+    transform: translate3d(7vw, -2vh, 0) scale(1.01) rotate(-1.5deg);
+  }
+  100% {
+    transform: translate3d(4vw, -7vh, 0) scale(1.06) rotate(1deg);
+  }
+}
+
+@keyframes macosWave4 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(-4vw, 3vh, 0) scale(1.07) rotate(-1.5deg);
+  }
+  60% {
+    transform: translate3d(-2vw, 6vh, 0) scale(0.99) rotate(2deg);
+  }
+  100% {
+    transform: translate3d(-6vw, 4vh, 0) scale(1.09) rotate(-2deg);
+  }
+}
+
+.animate-macos-wave-1 {
+  animation: macosWave1 35s ease-in-out infinite alternate;
+}
+
+.animate-macos-wave-2 {
+  animation: macosWave2 42s ease-in-out infinite alternate;
+}
+
+.animate-macos-wave-3 {
+  animation: macosWave3 30s ease-in-out infinite alternate;
+}
+
+.animate-macos-wave-4 {
+  animation: macosWave4 45s ease-in-out infinite alternate;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transform: none !important;
+  }
+}
